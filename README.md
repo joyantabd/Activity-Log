@@ -1,57 +1,50 @@
-##Custom User Log Activity in Laravel App <br>
-After reviewing all codes, you can understand how it works and simple. we will manage log without using anymore package. In this example i created "log_activities" table with following column as listed bellow:
+## Custom User Log Activity in Laravel App <br>
 
-1)ID
+After reviewing all codes, you can understand how it works and simple. we will manage log without using anymore package. In this ripo i created "log_activities" table with following column as listed bellow:
 
-2)Subject
-
-3)URL
-
-4)Method
-
-5)IP
-
-6)Agent
-
-7)user_id
-
-8)created_at
-
-9)updated_at
+1)ID<br>
+2)Subject<br>
+3)URL<br>
+4)Method<br>
+5)IP<br>
+6)Agent<br>
+7)user_id<br>
+8)created_at<br>
+9)updated_at<br>
 
 As listed above fields. I always put on log, so you can simply modify table structure and add new fields. I create LogActivity helper for put on log helper. So just follow few step and get very basic example of keep log activity.
-
 After creating successfully this example, you will have layout as like bellow screen shot.
 
-Step 1 : Install Laravel Fresh Application
+
+## Step 1 : Install Laravel Fresh Application
 
 we are going from scratch, So we require to get fresh Laravel application using bellow command, So open your terminal OR command prompt and run bellow command:
 
-composer create-project --prefer-dist laravel/laravel blog
+<b>composer create-project --prefer-dist laravel/laravel blog</b>
 
-Step 2: Database Configuration
+## Step 2: Database Configuration
 
 In this step we have to make database configuration for example database name, username, password etc. So let's open .env file and fill all details like as bellow:
 
-.env
+## .env
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=here your database name(blog)
-DB_USERNAME=here database username(root)
-DB_PASSWORD=here database password(root)
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=here your database name(blog)<br>
+DB_USERNAME=here database username(root)<br>
+DB_PASSWORD=here database password(root)<br>
 
-Step 3: Create LogActivity Table and Model
+## Step 3: Create LogActivity Table and Model
 
 In this step we have to create migration for log_activities table using Laravel 5.4 php artisan command, so first fire bellow command:
 
-php artisan make:migration create_log_activity_table
+<b>php artisan make:migration create_log_activity_table</b>
 
 After this command you will find one file in following path database/migrations and you have to put bellow code in your migration file for create contactus table.
 
-<?php
 
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -78,8 +71,6 @@ class CreateLogActivityTable extends Migration
             $table->timestamps();
         });
     }
-
-
     /**
      * Reverse the migrations.
      *
@@ -90,24 +81,23 @@ class CreateLogActivityTable extends Migration
         Schema::drop('log_activities');
     }
 }
+
+
 Now run above migration by following command:
 
-php artisan migrate
+<b>php artisan migrate</b>
 
 After creating table we have to create model for "log_activities" table so just run bellow command and create new model:
 
-php artisan make:model LogActivity
+<b>php artisan make:model LogActivity</b>
 
 Ok, so after run bellow command you will find app/LogActivity.php and put bellow content in LogActivity.php file:
 
 app/LogActivity.php
 
+
 <?php
-
-
 namespace App;
-
-
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -122,7 +112,9 @@ class LogActivity extends Model
         'subject', 'url', 'method', 'ip', 'agent', 'user_id'
     ];
 }
-Step 4: Create LogActivity Helper Class
+
+
+## Step 4: Create LogActivity Helper Class
 
 In this step we will create new directory "Helpers" in App directory. After created Helpers folder we require to create create LogActivity.php file and put bellow code:
 
@@ -234,7 +226,7 @@ class HomeController extends Controller
         return view('logActivity',compact('logs'));
     }
 }
-Step 8: Add View File
+## Step 8: Add View File
 
 In last step, we will create logActivity.blade.php file for display all logs with details form table. So let's copy from bellow code and put.
 
