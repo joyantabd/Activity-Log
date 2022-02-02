@@ -20,7 +20,7 @@ After creating successfully this example, you will have layout as like bellow sc
 
 we are going from scratch, So we require to get fresh Laravel application using bellow command, So open your terminal OR command prompt and run bellow command:
 
-<b>composer create-project --prefer-dist laravel/laravel blog</b>
+```composer create-project --prefer-dist laravel/laravel blog```
 
 ## Step 2: Database Configuration
 
@@ -28,22 +28,24 @@ In this step we have to make database configuration for example database name, u
 
 ## .env
 
+```
 DB_CONNECTION=mysql<br>
 DB_HOST=127.0.0.1<br>
 DB_PORT=3306<br>
 DB_DATABASE=here your database name(blog)<br>
 DB_USERNAME=here database username(root)<br>
 DB_PASSWORD=here database password(root)<br>
+```
 
 ## Step 3: Create LogActivity Table and Model
 
 In this step we have to create migration for log_activities table using Laravel 5.4 php artisan command, so first fire bellow command:
 
-<b>php artisan make:migration create_log_activity_table</b>
+ ``` php artisan make:migration create_log_activity_table```
 
 After this command you will find one file in following path database/migrations and you have to put bellow code in your migration file for create contactus table.
 
-
+```
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -81,21 +83,21 @@ class CreateLogActivityTable extends Migration
         Schema::drop('log_activities');
     }
 }
-
+```
 
 Now run above migration by following command:
 
-<b>php artisan migrate</b>
+```php artisan migrate```
 
 After creating table we have to create model for "log_activities" table so just run bellow command and create new model:
 
-<b>php artisan make:model LogActivity</b>
+```php artisan make:model LogActivity```
 
 Ok, so after run bellow command you will find app/LogActivity.php and put bellow content in LogActivity.php file:
 
 app/LogActivity.php
 
-
+```
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
@@ -113,13 +115,14 @@ class LogActivity extends Model
     ];
 }
 
-
+```
 ## Step 4: Create LogActivity Helper Class
 
 In this step we will create new directory "Helpers" in App directory. After created Helpers folder we require to create create LogActivity.php file and put bellow code:
 
 app/Helpers/LogActivity.php
 
+```
 <?php
 
 
@@ -152,12 +155,15 @@ class LogActivity
 
 
 }
-Step 5: Register Helper Class
+
+```
+
+## Step 5: Register Helper Class
 
 In this step we have to register Helper class as facade in configuration file. So let's open app.php file and add Helper facade with load class. open app.php file and add bellow Helper facade line.
 
 config/app.php
-
+```
 ....
 
 'aliases' => [
@@ -167,21 +173,21 @@ config/app.php
 	'LogActivity' => App\Helpers\LogActivity::class,
 
 ]
-
-Step 6: Add Route
+```
+## Step 6: Add Route
 
 In this step we will add two new routes. i added "add-to-log" route for testing you can simply use addToLog() with subject title like you can add "User created Successfully", "User updated successfully" etc subject as argument. another route for listing on user activity logs what was did by user. So let's add bellow two route.
 
 routes/web.php
-
+```
 Route::get('add-to-log', 'HomeController@myTestAddToLog');
 Route::get('logActivity', 'HomeController@logActivity');
 Step 7: Add Controller Method
-
+```
 In this step, we will add new two methods in HomeController file. i write how to add log on logs table and listing. So let's add bellow code.
 
 app/Http/Controllers/HomeController.php
-
+```
 <?php
 
 
@@ -226,12 +232,13 @@ class HomeController extends Controller
         return view('logActivity',compact('logs'));
     }
 }
+```
 ## Step 8: Add View File
 
 In last step, we will create logActivity.blade.php file for display all logs with details form table. So let's copy from bellow code and put.
 
 resources/views/logActivity.php
-
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -274,13 +281,15 @@ resources/views/logActivity.php
 
 </body>
 </html>
+
+```
 Now we are ready to run our example so run bellow command for quick run:
 
-php artisan serve
+```php artisan serve```
 
 Now you can open bellow URL on your browser:
-
+```
 http://localhost:8000/add-to-log
 
 http://localhost:8000/logActivity
-
+```
