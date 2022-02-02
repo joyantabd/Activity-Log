@@ -182,8 +182,9 @@ routes/web.php
 ```
 Route::get('add-to-log', 'HomeController@myTestAddToLog');
 Route::get('logActivity', 'HomeController@logActivity');
-Step 7: Add Controller Method
 ```
+## Step 7: Add Controller Method
+
 In this step, we will add new two methods in HomeController file. i write how to add log on logs table and listing. So let's add bellow code.
 
 app/Http/Controllers/HomeController.php
