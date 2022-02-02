@@ -1,4 +1,4 @@
-Custom User Log Activity in Laravel App
+##Custom User Log Activity in Laravel App <br>
 After reviewing all codes, you can understand how it works and simple. we will manage log without using anymore package. In this example i created "log_activities" table with following column as listed bellow:
 
 1)ID
